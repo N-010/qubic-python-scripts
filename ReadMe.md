@@ -14,7 +14,7 @@
 
 Запуск скрипта:
 ```powershell
-python BuildQubic.py --settingsJsonFilePath ".\Settings.json" --slnFilePath "G:\Projects\C++\Qubic\Qubic.sln" --cppFilePath "G:\Projects\C++\Qubic\Qubic\qubic.cpp" --msBuildFilePath "C:\Program Files\Microsoft Visual Studio\2022\Community\Msbuild\Current\Bin\amd64\MSBuild.exe" --freeCpuNum 2
+python BuildQubic.py --settingsJsonFilePath "G:\Programs\Qubic\Vexxhost\Settings.json" --slnFilePath "G:\Projects\C++\Qubic\Qubic.sln" --cppFilePath "G:\Projects\C++\Qubic\Qubic\qubic.cpp" --msBuildFilePath "C:\Program Files\Microsoft Visual Studio\2022\Community\Msbuild\Current\Bin\amd64\MSBuild.exe" --outDir "G:\Programs\Qubic\Vexxhost\Builds" --freeCpuNum 2
 ```
 ### Значения по умолчанию
 
