@@ -9,6 +9,13 @@ class JsonSettings(object):
                  seed: str,
                  computerId: str,
                  operatorId: str,
+
+                 #Network
+                 ownAddress: str,
+                 ownMask: str,
+                 defaultRouteGateway: str,
+                 ownPublicAddress:str,
+
                  tick: str,
                  region: str,
                  cpuNum: str,
@@ -21,8 +28,12 @@ class JsonSettings(object):
         self.tick = tick
         self.region = region
         self.cpuNum = cpuNum
-        # self.ownAddress = ownAddress
-        # self.ownMask = ownMask
+        # Network
+        self.ownAddress = ownAddress
+        self.ownMask = ownMask
+        self.defaultRouteGateway = defaultRouteGateway 
+        self.ownPublicAddress = ownPublicAddress 
+
         self.is_enable: bool = is_enable.lower() == "true".lower()
         self.is_computer: bool = is_computer.lower() == "true".lower()
         self.knownPublicPeers = knownPublicPeers
@@ -61,10 +72,29 @@ async def getSettings(jsonFile) -> list[JsonSettings]:
         except KeyError:
             tick = str(2500000)
 
+        # Openstack
         try:
             region = Settings["region"]
         except KeyError:
             region = ""
+
+        # Network
+        try:
+            ownAddress = Settings["ownAddress"]
+        except KeyError:
+            ownAddress = str("0.0.0.0")
+        try:
+            ownMask = Settings["ownMask"]
+        except KeyError:
+            ownMask = str("255.255.255.255")
+        try:
+            defaultRouteGateway = Settings["defaultRouteGateway"]
+        except KeyError:
+            defaultRouteGateway = str("0.0.0.0")
+        try:
+            ownPublicAddress = Settings["ownPublicAddress"]
+        except KeyError:
+            ownPublicAddress = str("0.0.0.0")
 
         try:
             is_computer = Settings["computer"]
@@ -72,8 +102,10 @@ async def getSettings(jsonFile) -> list[JsonSettings]:
             is_computer = str("false")
 
         instanceSettingsList.append(JsonSettings(
-            Settings["seed"], Settings["computerId"],
-            operatorId, tick, region,
-            cpuNum, Settings["enable"], is_computer, knownPublicPeers))
+            seed=Settings["seed"], computerId=Settings["computerId"],
+            operatorId=operatorId, ownAddress=ownAddress, ownMask=ownMask, 
+            defaultRouteGateway=defaultRouteGateway, ownPublicAddress=ownPublicAddress, 
+            tick=tick, region=region, cpuNum=cpuNum, is_enable=Settings["enable"], 
+            is_computer=is_computer, knownPublicPeers=knownPublicPeers))
 
     return instanceSettingsList

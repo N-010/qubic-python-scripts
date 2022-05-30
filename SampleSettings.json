@@ -1,46 +1,77 @@
 {
     "InstanceSettings": [
         {
+            
+            "ownAddress": "10.2.0.105",
+            "ownMask": "255.255.248.0",
+            "defaultGateway": "10.2.0.1",
+            "ownPublicAddress": "46.216.182.69",
+            
             "seed": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
             "computerId": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
             "cpu_num": "8",
-            "tick": "2500003",
+            "tick": "2500004",
             "enable": "true"
         },
         {
+            "ownAddress": "10.2.0.105",
+            "ownMask": "255.255.248.0",
+            "defaultGateway": "10.2.0.1",
+            "ownPublicAddress": "46.216.182.69",
+
             "seed": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
             "computerId": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
             "cpu_num": "8",
-            "tick": "2500003",
+            "tick": "2500004",
             "enable": "true"
         },
         {
+            "ownAddress": "10.2.0.105",
+            "ownMask": "255.255.248.0",
+            "defaultGateway": "10.2.0.1",
+            "ownPublicAddress": "46.216.182.69",
+            
             "seed": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
             "computerId": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
             "cpu_num": "8",
-            "tick": "2500003",
+            "tick": "2500004",
             "enable": "true"
         },
         {
+            "ownAddress": "10.2.0.105",
+            "ownMask": "255.255.248.0",
+            "defaultGateway": "10.2.0.1",
+            "ownPublicAddress": "46.216.182.69",
+            
             "seed": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
             "computerId": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
             "cpu_num": "8",
             "computer": "true",
-            "tick": "2500003",
+            "tick": "2500004",
             "enable": "true"
         },
         {
+            "ownAddress": "10.2.0.105",
+            "ownMask": "255.255.248.0",
+            "defaultGateway": "10.2.0.1",
+            "ownPublicAddress": "46.216.182.69",
+            
             "seed": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
             "computerId": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
             "cpu_num": "8",
-            "tick": "2500003",
+            "tick": "2500004",
             "enable": "false"
         },
         {
+            "ownAddress": "10.2.0.105",
+            "ownMask": "255.255.248.0",
+            "defaultGateway": "10.2.0.1",
+            "ownPublicAddress": "46.216.182.69",
+            
             "seed": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
             "computerId": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
             "cpu_num": "8",
-            "tick": "2500003",
+            "tick": "",
             "enable": "false"
         }
     ],

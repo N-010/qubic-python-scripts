@@ -125,6 +125,15 @@ async def main():
     knownPublicRegex = re.compile(
         '(static const unsigned char knownPublicPeers.* *= *{\n)((.*\{.*\},{0,1}\n)*)(\};)')
     tickRe = re.compile('(define TICK )(\w*)')
+    # Network Re
+    ownAddressRe = re.compile(
+        '(static const unsigned char ownAddress\[4\] = \{)(.*)(\})')
+    ownMaskRe = re.compile(
+        '(static const unsigned char ownMask\[4\] = \{)(.*)(\})')
+    defaultRouteGatewayRe = re.compile(
+        '(static const unsigned char defaultRouteGateway\[4\] = \{)(.*)(\})')
+    ownPublicAddressRe = re.compile(
+        '(static const unsigned char ownPublicAddress\[4\] = \{)(.*)(\})')
 
     taskSettings = asyncio.create_task(getSettings(settingsFilePath))
 
@@ -152,6 +161,16 @@ async def main():
         # Cpu Number
         cpuNumber = str(max(
             0, int(settings.cpuNum) - freeCpuNum))
+
+        # Network
+        ownAddress = settings.ownAddress.replace(r".", r",")
+        newCppContent = ownAddressRe.sub(rf"\g<1>{ownAddress}\g<3>", newCppContent)
+        ownMask = settings.ownMask.replace(r".", r",")
+        newCppContent = ownMaskRe.sub(rf"\g<1>{ownMask}\g<3>", newCppContent)
+        defaultRouteGateway = settings.defaultRouteGateway.replace(r".", r",")
+        newCppContent = defaultRouteGatewayRe.sub(rf"\g<1>{defaultRouteGateway}\g<3>", newCppContent)
+        ownPublicAddress = settings.ownPublicAddress.replace(r".", r",")
+        newCppContent = ownPublicAddressRe.sub(rf"\g<1>{ownPublicAddress}\g<3>", newCppContent)
 
         # Only Computer Settings
         if settings.is_computer:
