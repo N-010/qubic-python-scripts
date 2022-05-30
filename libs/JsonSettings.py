@@ -18,16 +18,20 @@ class JsonSettings(object):
 
                  tick: str,
                  region: str,
-                 cpuNum: str,
+                 computingCpu: str,
+                 miningCpu: str,
                  is_enable: str,
-                 is_computer: str,
                  knownPublicPeers: list[str]):
         self.seed = seed
         self.computerId = computerId
         self.operatorId = operatorId
         self.tick = tick
         self.region = region
-        self.cpuNum = cpuNum
+
+        # CPU
+        self.computingCpu = computingCpu
+        self.miningCpu = miningCpu
+        
         # Network
         self.ownAddress = ownAddress
         self.ownMask = ownMask
@@ -35,7 +39,6 @@ class JsonSettings(object):
         self.ownPublicAddress = ownPublicAddress 
 
         self.is_enable: bool = is_enable.lower() == "true".lower()
-        self.is_computer: bool = is_computer.lower() == "true".lower()
         self.knownPublicPeers = knownPublicPeers
 
 
@@ -55,18 +58,18 @@ async def getSettings(jsonFile) -> list[JsonSettings]:
     instanceSettingsList: list[JsonSettings] = []
     flavorRe = re.compile(".*-.*-.*")
     for Settings in jsonSettingsList:
-        try:
-            flavor_name = Settings["flavor_name"]
-            if flavorRe.findall(flavor_name).__len__() > 0:
-                cpuNum = str(Settings["flavor_name"]).split('-')[-1]
-            else:
-                raise KeyError
-        except KeyError:
-            try:
-                cpuNum = str(Settings["cpu_num"])
-            except KeyError:
-                cpuNum = str(0)
 
+        # CPU
+        try:
+            computingCpu = str(Settings["computingCpu"])
+        except KeyError:
+            computingCpu = str(0)
+        try:
+            miningCpu = str(Settings["miningCpu"])
+        except KeyError:
+            miningCpu = str(0)
+
+        # Tick
         try:
             tick = str(Settings["tick"])
         except KeyError:
@@ -96,16 +99,10 @@ async def getSettings(jsonFile) -> list[JsonSettings]:
         except KeyError:
             ownPublicAddress = str("0.0.0.0")
 
-        try:
-            is_computer = Settings["computer"]
-        except:
-            is_computer = str("false")
-
         instanceSettingsList.append(JsonSettings(
             seed=Settings["seed"], computerId=Settings["computerId"],
             operatorId=operatorId, ownAddress=ownAddress, ownMask=ownMask, 
             defaultRouteGateway=defaultRouteGateway, ownPublicAddress=ownPublicAddress, 
-            tick=tick, region=region, cpuNum=cpuNum, is_enable=Settings["enable"], 
-            is_computer=is_computer, knownPublicPeers=knownPublicPeers))
+            tick=tick, region=region,  miningCpu=miningCpu, computingCpu=computingCpu, is_enable=Settings["enable"], knownPublicPeers=knownPublicPeers))
 
     return instanceSettingsList

@@ -62,7 +62,7 @@ async def main():
     parser.add_argument("--freeCpuNum", type=int,
                         help="The number of cores that will not take part in mining",
                         default=2)
-    parser.add_argument("--saveCppFile", help="",
+    parser.add_argument("--checkCppFile", help="The project will NOT be build, but the generated cpp files will be saved",
                         action="store_true", default=False)
     parser.add_argument("--fsMode", help="Apply the code that allows you to select FS with .data files",
                         action="store_true", default=False)
@@ -78,7 +78,7 @@ async def main():
     freeCpuNum: int = args.freeCpuNum
     computingCpuNum: int = 1
     outDir = str(os.path.abspath(args.outDir))
-    saveCppFile = args.saveCppFile
+    checkCppFile = args.checkCppFile
     fsMode = args.fsMode
 
     # Checking
@@ -102,7 +102,7 @@ async def main():
     currentStyle = style.GREEN if exists else style.RED
     print(currentStyle + f"Out Dir: {outDir}" + style.WHITE)
 
-    print(f"Save cpp File: {saveCppFile}")
+    print(f"Check cpp files: {checkCppFile}")
     print(f"FS Mode: {fsMode}")
 
     atexit.register(restoreCppFile)
@@ -158,9 +158,6 @@ async def main():
             rf"\1{settings.computerId}\3", newCppContent)
         # Tick
         newCppContent = tickRe.sub(rf"\g<1>{settings.tick}", newCppContent)
-        # Cpu Number
-        cpuNumber = str(max(
-            0, int(settings.cpuNum) - freeCpuNum))
 
         # Network
         ownAddress = settings.ownAddress.replace(r".", r",")
@@ -172,34 +169,33 @@ async def main():
         ownPublicAddress = settings.ownPublicAddress.replace(r".", r",")
         newCppContent = ownPublicAddressRe.sub(rf"\g<1>{ownPublicAddress}\g<3>", newCppContent)
 
-        # Only Computer Settings
-        if settings.is_computer:
-            cpuNumber = str(max(0, int(cpuNumber) - computingCpuNum))
-            newCppContent = numberOfComputingProcessorsRegex.sub(
-                rf"\1 {computingCpuNum}", newCppContent)
-
+        # CPU
+        newCppContent = numberOfComputingProcessorsRegex.sub(
+            rf"\g<1> {settings.computingCpu}", newCppContent)
         newCppContent = numberOfMiningProcessorsRegex.sub(
-            rf"\1 {cpuNumber}", newCppContent)
+            rf"\g<1> {settings.miningCpu}", newCppContent)
+
         # Known Public IPs
         knownPublicPeers = '\t' + '\n\t'.join(
             convertIps(settings.knownPublicPeers)) + '\n'
         newCppContent = knownPublicRegex.sub(
-            rf"\1{knownPublicPeers}\4", newCppContent)
+            rf"\g<1>{knownPublicPeers}\g<4>", newCppContent)
 
         # FS Mode
         if fsMode:
             newCppContent = applyFSMode(newCppContent)
 
-        if saveCppFile:
-            saveCppFile = await aiofiles.open(f"Qubic_{seed[-2:]}.txt", "w").__aenter__()
+        if checkCppFile:
+            checkCppFile = await aiofiles.open(f"Qubic_{seed[-2:]}.txt", "w").__aenter__()
             savedCppFileTasks.append(asyncio.create_task(
-                saveCppFile.write(newCppContent)))
+                checkCppFile.write(newCppContent)))
 
         async with aiofiles.open(cppFilePath, "w") as cppFile:
             await cppFile.write(newCppContent)
 
-        msBuildCmd = fr""""{msBuildFilePath}" "{slnFilePath}" -m /t:build /p:DebugSymbols=false /p:DebugType=None /p:Configuration=Release,OutDir={outDir},TargetName=Qubic_{seed[-2:]}"""
-        subprocess.call(msBuildCmd)
+        if not checkCppFile:
+            msBuildCmd = fr""""{msBuildFilePath}" "{slnFilePath}" -m /t:build /p:DebugSymbols=false /p:DebugType=None /p:Configuration=Release,OutDir={outDir},TargetName=Qubic_{seed[-2:]}"""
+            subprocess.call(msBuildCmd)
 
     await asyncio.gather(*savedCppFileTasks)
 

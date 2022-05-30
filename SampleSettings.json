@@ -1,15 +1,14 @@
 {
     "InstanceSettings": [
         {
-            
             "ownAddress": "10.2.0.105",
             "ownMask": "255.255.248.0",
             "defaultGateway": "10.2.0.1",
             "ownPublicAddress": "46.216.182.69",
-            
             "seed": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
             "computerId": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-            "cpu_num": "8",
+            "computingCpu": "1",
+            "miningCpu": "4",
             "tick": "2500004",
             "enable": "true"
         },
@@ -18,10 +17,10 @@
             "ownMask": "255.255.248.0",
             "defaultGateway": "10.2.0.1",
             "ownPublicAddress": "46.216.182.69",
-
             "seed": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
             "computerId": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-            "cpu_num": "8",
+            "computingCpu": "1",
+            "miningCpu": "4",
             "tick": "2500004",
             "enable": "true"
         },
@@ -30,10 +29,10 @@
             "ownMask": "255.255.248.0",
             "defaultGateway": "10.2.0.1",
             "ownPublicAddress": "46.216.182.69",
-            
             "seed": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
             "computerId": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-            "cpu_num": "8",
+            "computingCpu": "1",
+            "miningCpu": "4",
             "tick": "2500004",
             "enable": "true"
         },
@@ -42,10 +41,10 @@
             "ownMask": "255.255.248.0",
             "defaultGateway": "10.2.0.1",
             "ownPublicAddress": "46.216.182.69",
-            
             "seed": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
             "computerId": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-            "cpu_num": "8",
+            "computingCpu": "1",
+            "miningCpu": "4",
             "computer": "true",
             "tick": "2500004",
             "enable": "true"
@@ -55,24 +54,24 @@
             "ownMask": "255.255.248.0",
             "defaultGateway": "10.2.0.1",
             "ownPublicAddress": "46.216.182.69",
-            
             "seed": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
             "computerId": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-            "cpu_num": "8",
+            "computingCpu": "1",
+            "miningCpu": "4",
             "tick": "2500004",
-            "enable": "false"
+            "enable": "true"
         },
         {
             "ownAddress": "10.2.0.105",
             "ownMask": "255.255.248.0",
             "defaultGateway": "10.2.0.1",
             "ownPublicAddress": "46.216.182.69",
-            
             "seed": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
             "computerId": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-            "cpu_num": "8",
-            "tick": "",
-            "enable": "false"
+            "computingCpu": "1",
+            "miningCpu": "4",
+            "tick": "2500004",
+            "enable": "true"
         }
     ],
     "operatorId": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
@@ -82,17 +81,5 @@
         "134.17.25.28",
         "65.108.68.67",
         "78.94.64.185"
-    ],
-    "white_listed_peers": [
-        "178.168.208.71",
-        "82.114.88.225",
-        "213.127.147.70",
-        "185.130.226.234",
-        "93.125.10.204",
-        "134.17.25.28",
-        "213.184.249.83",
-        "65.108.68.67",
-        "178.13.73.101",
-        "93.125.105.208"
     ]
 }
