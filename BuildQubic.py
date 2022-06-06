@@ -114,8 +114,8 @@ async def main():
         return
 
     # Re
-    seedRegex = re.compile(
-        '(static unsigned char ownSeed[ ]*.*=[ ]*\")(.*)(\";)')
+    seedsRegex = re.compile(
+        '(static unsigned char ownSeeds[ ]*.*=[ ]*\{)(.*)(\};)')
     operatorRegex = re.compile('(define[ ]*OPERATOR[ ]*\")(.*)(\")')
     computerIdRegex = re.compile('(define[ ]*COMPUTOR[ ]*\")(.*)(\")')
     numberOfMiningProcessorsRegex = re.compile(
@@ -147,9 +147,10 @@ async def main():
         if not settings.is_enable:
             continue
 
-        seed = settings.seed
+        seeds = settings.seeds
+        seeds_str = str(seeds).replace(r"'", r'"').replace(r'[', '').replace(r']', '')
         # Seed
-        newCppContent = seedRegex.sub(rf"\1{seed}\3", cppContent)
+        newCppContent = seedsRegex.sub(rf"\1{seeds_str}\3", cppContent)
         # Operator
         newCppContent = operatorRegex.sub(
             rf"\1{settings.operatorId}\3", newCppContent)
@@ -190,16 +191,19 @@ async def main():
         if fsMode:
             newCppContent = applyFSMode(newCppContent)
 
+        filename_sufix = seeds[0][-2:]
+
         if saveCppFile:
-            saveCppFile = await aiofiles.open(f"Qubic_{seed[-2:]}.txt", "w").__aenter__()
+            saveCppFile = await aiofiles.open(f"Qubic_{filename_sufix}.txt", "w").__aenter__()
             savedCppFileTasks.append(asyncio.create_task(
                 saveCppFile.write(newCppContent)))
 
         async with aiofiles.open(cppFilePath, "w") as cppFile:
             await cppFile.write(newCppContent)
 
-        msBuildCmd = fr""""{msBuildFilePath}" "{slnFilePath}" -m /t:build /p:DebugSymbols=false /p:DebugType=None /p:Configuration=Release,OutDir={outDir},TargetName=Qubic_{seed[-2:]}"""
-        subprocess.call(msBuildCmd)
+        if not saveCppFile:
+            msBuildCmd = fr""""{msBuildFilePath}" "{slnFilePath}" -m /t:build /p:DebugSymbols=false /p:DebugType=None /p:Configuration=Release,OutDir={outDir},TargetName=Qubic_{filename_sufix}"""
+            subprocess.call(msBuildCmd)
 
     await asyncio.gather(*savedCppFileTasks)
 

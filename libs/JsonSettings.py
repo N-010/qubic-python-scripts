@@ -6,7 +6,7 @@ import aiofiles
 
 class JsonSettings(object):
     def __init__(self: str,
-                 seed: str,
+                 seeds: list[str],
                  computerId: str,
                  operatorId: str,
 
@@ -22,7 +22,7 @@ class JsonSettings(object):
                  is_enable: str,
                  is_computer: str,
                  knownPublicPeers: list[str]):
-        self.seed = seed
+        self.seeds = seeds
         self.computerId = computerId
         self.operatorId = operatorId
         self.tick = tick
@@ -55,6 +55,12 @@ async def getSettings(jsonFile) -> list[JsonSettings]:
     instanceSettingsList: list[JsonSettings] = []
     flavorRe = re.compile(".*-.*-.*")
     for Settings in jsonSettingsList:
+        # seeds
+        try:
+            seeds = Settings["seeds"]
+        except Exception as e:
+            seeds = ["aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"]
+
         try:
             flavor_name = Settings["flavor_name"]
             if flavorRe.findall(flavor_name).__len__() > 0:
@@ -102,7 +108,7 @@ async def getSettings(jsonFile) -> list[JsonSettings]:
             is_computer = str("false")
 
         instanceSettingsList.append(JsonSettings(
-            seed=Settings["seed"], computerId=Settings["computerId"],
+            seeds=seeds, computerId=Settings["computerId"],
             operatorId=operatorId, ownAddress=ownAddress, ownMask=ownMask, 
             defaultRouteGateway=defaultRouteGateway, ownPublicAddress=ownPublicAddress, 
             tick=tick, region=region, cpuNum=cpuNum, is_enable=Settings["enable"], 

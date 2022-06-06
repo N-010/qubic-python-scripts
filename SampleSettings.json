@@ -1,13 +1,13 @@
 {
     "InstanceSettings": [
         {
-            
             "ownAddress": "10.2.0.105",
             "ownMask": "255.255.248.0",
             "defaultGateway": "10.2.0.1",
             "ownPublicAddress": "46.216.182.69",
-            
-            "seed": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "seeds": [
+                "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            ],
             "computerId": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
             "cpu_num": "8",
             "tick": "2500004",
@@ -18,8 +18,9 @@
             "ownMask": "255.255.248.0",
             "defaultGateway": "10.2.0.1",
             "ownPublicAddress": "46.216.182.69",
-
-            "seed": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "seeds": [
+                "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            ],
             "computerId": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
             "cpu_num": "8",
             "tick": "2500004",
@@ -30,8 +31,9 @@
             "ownMask": "255.255.248.0",
             "defaultGateway": "10.2.0.1",
             "ownPublicAddress": "46.216.182.69",
-            
-            "seed": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "seeds": [
+                "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            ],
             "computerId": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
             "cpu_num": "8",
             "tick": "2500004",
@@ -42,8 +44,12 @@
             "ownMask": "255.255.248.0",
             "defaultGateway": "10.2.0.1",
             "ownPublicAddress": "46.216.182.69",
-            
-            "seed": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "seeds": [
+                "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            ],
             "computerId": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
             "cpu_num": "8",
             "computer": "true",
@@ -55,8 +61,9 @@
             "ownMask": "255.255.248.0",
             "defaultGateway": "10.2.0.1",
             "ownPublicAddress": "46.216.182.69",
-            
-            "seed": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "seeds": [
+                "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            ],
             "computerId": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
             "cpu_num": "8",
             "tick": "2500004",
@@ -67,8 +74,9 @@
             "ownMask": "255.255.248.0",
             "defaultGateway": "10.2.0.1",
             "ownPublicAddress": "46.216.182.69",
-            
-            "seed": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "seeds": [
+                "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            ],
             "computerId": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
             "cpu_num": "8",
             "tick": "",
