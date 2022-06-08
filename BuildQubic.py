@@ -115,7 +115,7 @@ async def main():
 
     # Re
     seedsRegex = re.compile(
-        '(static unsigned char ownSeeds[ ]*.*=[ ]*\{)(.*)(\};)')
+        '(static unsigned char ownSeeds[ ]*.*=[ ]*\{\n+)(.*)(\n+\};)')
     operatorRegex = re.compile('(define[ ]*OPERATOR[ ]*\")(.*)(\")')
     computerIdRegex = re.compile('(define[ ]*COMPUTOR[ ]*\")(.*)(\")')
     numberOfMiningProcessorsRegex = re.compile(
